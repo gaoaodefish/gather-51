@@ -1,0 +1,6 @@
+".\Objects\test.obj",
+".\Objects\Delay.obj",
+".\Objects\NixieLight.obj",
+".\Objects\KeyMatrix.obj" 
+TO ".\Objects\test" 
+PRINT(".\Listings\test.m51") RAMSIZE(256) 
