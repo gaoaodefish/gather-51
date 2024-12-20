@@ -7,8 +7,6 @@ typedef unsigned int u16;
 #include "NixieLight.H"
 #include "Delay.H"
 #include "KeyMatrix.H"
-#include "Lattice.H"
-#include "intrins.H"
-#include "28BYJ_48.H"
+#include "74HC595.H"
 
 #endif

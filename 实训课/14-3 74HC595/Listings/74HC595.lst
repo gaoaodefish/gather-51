@@ -1,0 +1,60 @@
+C51 COMPILER V9.59.0.0   74HC595                                                           12/18/2024 16:15:59 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE 74HC595
+OBJECT MODULE PLACED IN .\Objects\74HC595.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE Hardware\74HC595.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Hardware) DEBUG OBJ
+                    -ECTEXTEND PRINT(.\Listings\74HC595.lst) OBJECT(.\Objects\74HC595.obj)
+
+line level    source
+
+   1          #include "Boot.H"
+   2          
+   3          sbit RCK = P3^0;
+   4          sbit SRCLK = P3^1;
+   5          sbit SER = P3^2;
+   6          
+   7          //写入一个字节数据
+   8          void hc595_write_data(u8 dat)
+   9          {
+  10   1              u8 i = 0;
+  11   1              for(i = 0; i<8; i++)
+  12   1              {
+  13   2                      SER = (dat>>7-i)%2;
+  14   2                      SRCLK = 0;
+  15   2                      delay(1);
+  16   2                      SRCLK = 1;
+  17   2                      delay(1);
+  18   2              }
+  19   1      }
+  20          
+  21          //输出数据
+  22          void hc595_output()
+  23          {
+  24   1              RCK = 0;
+  25   1              delay(1);
+  26   1              RCK = 1;
+  27   1      }
+  28          
+  29          void hc595_spot_display(u8 r1, u8 r2, u8 c1,u8 c2)
+  30          {
+  31   1              hc595_write_data(c2);           //高八列
+  32   1              hc595_write_data(c1);           //低八列
+  33   1              hc595_write_data(r2);           //高八行
+  34   1              hc595_write_data(r1);           //低八行
+  35   1              hc595_output();         //输出
+  36   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    101    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

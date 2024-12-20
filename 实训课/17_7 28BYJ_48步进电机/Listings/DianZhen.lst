@@ -1,0 +1,25 @@
+C51 COMPILER V9.59.0.0   DIANZHEN                                                          12/18/2024 17:30:58 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE DIANZHEN
+OBJECT MODULE PLACED IN .\Objects\DianZhen.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE Hardware\DianZhen.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Hardware) DEBUG OB
+                    -JECTEXTEND PRINT(.\Listings\DianZhen.lst) OBJECT(.\Objects\DianZhen.obj)
+
+line level    source
+
+   1          #include "Boot.H"
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

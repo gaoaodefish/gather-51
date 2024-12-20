@@ -1,0 +1,87 @@
+C51 COMPILER V9.59.0.0   NIXIELIGHT                                                        12/18/2024 16:09:02 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE NIXIELIGHT
+OBJECT MODULE PLACED IN .\Objects\NixieLight.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE Hardware\NixieLight.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Hardware) DEBUG 
+                    -OBJECTEXTEND PRINT(.\Listings\NixieLight.lst) OBJECT(.\Objects\NixieLight.obj)
+
+line level    source
+
+   1          #include "Boot.H"
+   2          
+   3          sbit LSA = P1^0; //74H138 A段
+   4          sbit LSB = P1^1; //74H138 B段
+   5          sbit LSC = P1^2; //74H138 C段
+   6          
+   7          
+   8          static unsigned char smg_code[] = {
+   9                  0x3F,  //"0"
+  10              0x06,  //"1"
+  11              0x5B,  //"2"
+  12              0x4F,  //"3"
+  13              0x66,  //"4"
+  14              0x6D,  //"5"
+  15              0x7D,  //"6"
+  16              0x07,  //"7"
+  17              0x7F,  //"8"
+  18              0x6F,  //"9"
+  19              0x77,  //"A"
+  20              0x7C,  //"B"
+  21              0x39,  //"C"
+  22              0x5E,  //"D"
+  23              0x79,  //"E"
+  24              0x71,  //"F"
+  25              0x76,  //"H"
+  26              0x38,  //"L"
+  27              0x37,  //"n"
+  28              0x3E,  //"u"
+  29              0x73,  //"P"
+  30              0x5C,  //"o"
+  31              0x40,  //"-"
+  32              0x00  //熄灭
+  33          };
+  34          
+  35          //静态数码管显示函数
+  36          void smg_static_display(u8 duan)
+  37          {
+  38   1              SMG_STATIC_PORT = ~smg_code[duan];
+  39   1      }
+  40          
+  41          //动态数码管显示函数
+  42          //wei 第几位数码管，范围：1-8
+  43          //duan 显示什么，范围：0-15
+  44          void smg_dymanic_display(unsigned char wei,duan)
+  45          {
+  46   1              SMG_DYMANIC_PORT = 0x00;
+  47   1              switch(wei-1)
+  48   1              {
+  49   2                      case 7: LSA = 1; LSB = 1; LSC = 1; break;
+  50   2                      case 6: LSA = 1; LSB = 1; LSC = 0; break;
+  51   2                      case 5: LSA = 1; LSB = 0; LSC = 1; break;
+  52   2                      case 4: LSA = 1; LSB = 0; LSC = 0; break;
+  53   2                      case 3: LSA = 0; LSB = 1; LSC = 1; break;
+  54   2                      case 2: LSA = 0; LSB = 1; LSC = 0; break;
+C51 COMPILER V9.59.0.0   NIXIELIGHT                                                        12/18/2024 16:09:02 PAGE 2   
+
+  55   2                      case 1: LSA = 0; LSB = 0; LSC = 1; break;
+  56   2                      case 0: LSA = 0; LSB = 0; LSC = 0; break;
+  57   2              }
+  58   1              SMG_DYMANIC_PORT = smg_code[duan];
+  59   1              delay(100);
+  60   1              SMG_DYMANIC_PORT = 0x00;
+  61   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    114    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     24    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

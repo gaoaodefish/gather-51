@@ -1,0 +1,66 @@
+C51 COMPILER V9.59.0.0   TEST                                                              12/19/2024 17:01:01 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE TEST
+OBJECT MODULE PLACED IN .\Objects\test.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE test.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Hardware) DEBUG OBJECTEXTEND PR
+                    -INT(.\Listings\test.lst) OBJECT(.\Objects\test.obj)
+
+line level    source
+
+   1          #include "Boot.H"
+   2          
+   3          #define STEPMOTOR_MAXSPEED 100
+   4          #define STEPMOTOR_MINSPEED 110
+   5          
+   6          extern void step_motor_28BYJ48_send_pulse(u8 step ,u8 dir);
+   7          
+   8          void main()
+   9          { 
+  10   1              u8 key = 0; 
+  11   1              u8 dir = 0;
+  12   1              u8 step = 0;
+  13   1              u8 speed = STEPMOTOR_MAXSPEED;
+  14   1              bit flag = 1;
+  15   1              while(1)
+  16   1              {       
+  17   2                      key = key_matrix_flip_scan();
+  18   2                      switch(key)
+  19   2                      {
+  20   3                              case 1:
+  21   3                                      dir = !dir;
+  22   3                                      break;
+  23   3                              case 2:
+  24   3                                      if(speed>STEPMOTOR_MAXSPEED)
+  25   3                                              speed--;
+  26   3                                      break;
+  27   3                              case 3:
+  28   3                                      if(speed<STEPMOTOR_MINSPEED)
+  29   3                                              speed++;
+  30   3                                      break;
+  31   3                              case 4:
+  32   3                                      flag = !flag;
+  33   3                                      break;
+  34   3                      }
+  35   2                      if(flag)
+  36   2                      {
+  37   3                              step_motor_28BYJ48_send_pulse(step++,dir);
+  38   3                              if(step == 8)step = 0;
+  39   3                              delay(speed);
+  40   3                      }
+  41   2              }
+  42   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    108    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

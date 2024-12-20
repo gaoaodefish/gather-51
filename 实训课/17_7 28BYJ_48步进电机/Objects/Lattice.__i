@@ -1,0 +1,1 @@
+"Hardware\Lattice.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Hardware) DEBUG OBJECTEXTEND PRINT(.\Listings\Lattice.lst) OBJECT(.\Objects\Lattice.obj)

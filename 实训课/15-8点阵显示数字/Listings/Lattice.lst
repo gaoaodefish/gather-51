@@ -1,0 +1,64 @@
+C51 COMPILER V9.59.0.0   LATTICE                                                           12/19/2024 14:07:52 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE LATTICE
+OBJECT MODULE PLACED IN .\Objects\Lattice.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE Hardware\Lattice.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Hardware) DEBUG OBJ
+                    -ECTEXTEND PRINT(.\Listings\Lattice.lst) OBJECT(.\Objects\Lattice.obj)
+
+line level    source
+
+   1          #include "Boot.H"
+   2          
+   3          sbit RCK = P3^5;
+   4          sbit SRCLK = P3^6;
+   5          sbit SER = P3^7;
+   6          
+   7          void hc595_spot_display(u8 d1, u8 d2, u8 d3,u8 d4)
+   8          {
+   9   1              u8 i = 0;
+  10   1              for(i = 0; i<8; i++)
+  11   1              {
+  12   2                      SER = d4>>7;
+  13   2                      d4<<=1;
+  14   2                      SRCLK = 0;
+  15   2                      SRCLK = 1;
+  16   2              }       
+  17   1              for(i = 0; i<8; i++)
+  18   1              {
+  19   2                      SER = d3>>7;
+  20   2                      d3<<=1;
+  21   2                      SRCLK = 0;
+  22   2                      SRCLK = 1;
+  23   2              }       
+  24   1              for(i = 0; i<8; i++)
+  25   1              {
+  26   2                      SER = d2>>7;
+  27   2                      d2<<=1;
+  28   2                      SRCLK = 0;
+  29   2                      SRCLK = 1;
+  30   2              }       
+  31   1              for(i = 0; i<8; i++)
+  32   1              {
+  33   2                      SER = d1>>7;
+  34   2                      d1<<=1;
+  35   2                      SRCLK = 0;
+  36   2                      SRCLK = 1;
+  37   2              }               
+  38   1              RCK = 0;
+  39   1              RCK = 1;        
+  40   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    146    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
