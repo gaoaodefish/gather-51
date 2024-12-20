@@ -1,0 +1,5 @@
+".\Objects\test.obj",
+".\Objects\ExpernalInterrupt.obj",
+".\Objects\Delay.obj" 
+TO ".\Objects\test" 
+PRINT(".\Listings\test.m51") RAMSIZE(256) 

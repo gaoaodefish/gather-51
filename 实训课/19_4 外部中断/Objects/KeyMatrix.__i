@@ -1,0 +1,1 @@
+"Hardware\KeyMatrix.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Hardware) DEBUG OBJECTEXTEND PRINT(.\Listings\KeyMatrix.lst) OBJECT(.\Objects\KeyMatrix.obj)

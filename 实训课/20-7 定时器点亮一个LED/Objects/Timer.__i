@@ -1,0 +1,1 @@
+"Hardware\Timer.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Hardware) DEBUG OBJECTEXTEND PRINT(.\Listings\Timer.lst) OBJECT(.\Objects\Timer.obj)

@@ -1,0 +1,60 @@
+C51 COMPILER V9.59.0.0   EXPERNALINTERRUPT                                                 12/20/2024 15:16:48 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE EXPERNALINTERRUPT
+OBJECT MODULE PLACED IN .\Objects\ExpernalInterrupt.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE Hardware\ExpernalInterrupt.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Hardware)
+                    - DEBUG OBJECTEXTEND PRINT(.\Listings\ExpernalInterrupt.lst) OBJECT(.\Objects\ExpernalInterrupt.obj)
+
+line level    source
+
+   1          #include <STC89C5xRC.H>
+   2          #include "Delay.H"
+   3          #include "ExpernalInterrupt.H"
+   4          
+   5          //外部中断0，初始化
+   6          void exti0_init()
+   7          {
+   8   1              IT0 = 1;
+   9   1              EX0 = 1;
+  10   1              EA = 1;
+  11   1      }
+  12          //外部中断1，初始化
+  13          void exti1_init()
+  14          {
+  15   1              IT1 = 1;
+  16   1              EX1 = 1;
+  17   1              EA = 1; 
+  18   1      }
+  19          
+  20          void exti0()interrupt 0
+  21          {
+  22   1              delay(1000);
+  23   1              if(key1 == 0)
+  24   1              {
+  25   2                      LED = !LED;
+  26   2              }
+  27   1      }
+  28          
+  29          void exti1()interrupt 2
+  30          {
+  31   1              delay(1000);
+  32   1              if(key1 == 0)
+  33   1              {
+  34   2                      LED = !LED;
+  35   2              }
+  36   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    150    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

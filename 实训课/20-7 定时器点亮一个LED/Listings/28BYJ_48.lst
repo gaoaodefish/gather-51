@@ -1,0 +1,49 @@
+C51 COMPILER V9.59.0.0   28BYJ_48                                                          12/20/2024 14:57:49 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE 28BYJ_48
+OBJECT MODULE PLACED IN .\Objects\28BYJ_48.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE Hardware\28BYJ_48.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Hardware) DEBUG OB
+                    -JECTEXTEND PRINT(.\Listings\28BYJ_48.lst) OBJECT(.\Objects\28BYJ_48.obj)
+
+line level    source
+
+   1          #include "Boot.H"
+   2          
+   3          sbit IN1_D = P1^0;
+   4          sbit IN1_C = P1^1;
+   5          sbit IN1_B = P1^2;
+   6          sbit IN1_A = P1^3;
+   7          
+   8          void step_motor_28BYJ48_send_pulse(u8 step ,u8 dir)
+   9          {
+  10   1              u8 tmp = step;
+  11   1              
+  12   1              if(dir == 0)
+  13   1                      tmp = 7-tmp;
+  14   1              switch(tmp)
+  15   1              {
+  16   2                      case 0: IN1_A = 1; IN1_B = 1; IN1_C = 1; IN1_D = 0; break;
+  17   2                      case 1: IN1_A = 1; IN1_B = 1; IN1_C = 0; IN1_D = 0; break;
+  18   2                      case 2: IN1_A = 1; IN1_B = 1; IN1_C = 0; IN1_D = 1; break;
+  19   2                      case 3: IN1_A = 1; IN1_B = 0; IN1_C = 0; IN1_D = 1; break;
+  20   2                      case 4: IN1_A = 1; IN1_B = 0; IN1_C = 1; IN1_D = 1; break;
+  21   2                      case 5: IN1_A = 0; IN1_B = 0; IN1_C = 1; IN1_D = 1; break;
+  22   2                      case 6: IN1_A = 0; IN1_B = 1; IN1_C = 1; IN1_D = 1; break;
+  23   2                      case 7: IN1_A = 0; IN1_B = 1; IN1_C = 1; IN1_D = 0; break;
+  24   2              }
+  25   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    101    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

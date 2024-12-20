@@ -10,5 +10,6 @@ typedef unsigned int u16;
 #include "Lattice.H"
 #include "intrins.H"
 #include "28BYJ_48.H"
+#include "Expernal_Interrupt.H"
 
 #endif
